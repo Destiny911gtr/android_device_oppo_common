@@ -15,6 +15,7 @@
     <application
             android:icon="@android:drawable/sym_def_app_icon"
             android:label="DeviceHandler"
+	    android:supportsRtl="true"
             >
 
         <!-- stub to ensure its loaded - DO NOT REMOVE -->
