@@ -17,26 +17,40 @@
 package com.slim.device.settings;
 
 import android.os.Bundle;
-import android.preference.ListPreference;
-import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
 import android.preference.SwitchPreference;
 import com.slim.device.SRGBModeSwitch;
 import com.slim.device.DCIModeSwitch;
-import android.preference.TwoStatePreference;
+import android.support.v14.preference.PreferenceFragment;
+import android.support.v7.preference.ListPreference;
+import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceCategory;
+import android.support.v7.preference.PreferenceScreen;
+import android.support.v7.preference.TwoStatePreference;
+import android.util.Log;
+import android.text.TextUtils;
+import android.provider.Settings;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListView;
 import com.slim.device.KernelControl;
 import com.slim.device.R;
 import com.slim.device.util.FileUtils;
 
-public class SliderSettings extends PreferenceActivity
-        implements OnPreferenceChangeListener {
+public class DeviceSettings extends PreferenceFragment
+        implements Preference.OnPreferenceChangeListener {
 
     public static final String KEY_SRGB_SWITCH = "srgb";
     public static final String KEY_DCI_SWITCH = "dci";
+    public static final String KEYCODE_SLIDER_TOP = "keycode_top_position";
+    public static final String KEYCODE_SLIDER_MIDDLE = "keycode_middle_position";
+    public static final String KEYCODE_SLIDER_BOTTOM = "keycode_bottom_position";
     private static final String KEY_CATEGORY_GRAPHICS = "graphics";
 
-    private SwitchPreference mSliderSwap;
+    private TwoStatePreference mSliderSwap;
     private ListPreference mSliderTop;
     private ListPreference mSliderMiddle;
     private ListPreference mSliderBottom;
@@ -44,30 +58,29 @@ public class SliderSettings extends PreferenceActivity
     private TwoStatePreference mDCIModeSwitch;
 
 @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        addPreferencesFromResource(R.xml.slider_panel);
+    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+    setPreferencesFromResource(R.xml.main, rootKey);
 
-        mSliderSwap = (SwitchPreference) findPreference("button_swap");
+        mSliderSwap = (TwoStatePreference) findPreference("button_swap");
         mSliderSwap.setOnPreferenceChangeListener(this);
 
-        mSliderTop = (ListPreference) findPreference("keycode_top_position");
+        mSliderTop = (ListPreference) findPreference(KEYCODE_SLIDER_TOP);
         mSliderTop.setOnPreferenceChangeListener(this);
 
-        mSliderMiddle = (ListPreference) findPreference("keycode_middle_position");
+        mSliderMiddle = (ListPreference) findPreference(KEYCODE_SLIDER_MIDDLE);
         mSliderMiddle.setOnPreferenceChangeListener(this);
 
-        mSliderBottom = (ListPreference) findPreference("keycode_bottom_position");
+        mSliderBottom = (ListPreference) findPreference(KEYCODE_SLIDER_BOTTOM);
         mSliderBottom.setOnPreferenceChangeListener(this);
 
         mSRGBModeSwitch = (TwoStatePreference) findPreference(KEY_SRGB_SWITCH);
         mSRGBModeSwitch.setEnabled(SRGBModeSwitch.isSupported());
-        mSRGBModeSwitch.setChecked(SRGBModeSwitch.isCurrentlyEnabled(this));
+        mSRGBModeSwitch.setChecked(SRGBModeSwitch.isCurrentlyEnabled(this.getContext()));
         mSRGBModeSwitch.setOnPreferenceChangeListener(new SRGBModeSwitch());
 
         mDCIModeSwitch = (TwoStatePreference) findPreference(KEY_DCI_SWITCH);
         mDCIModeSwitch.setEnabled(DCIModeSwitch.isSupported());
-        mDCIModeSwitch.setChecked(DCIModeSwitch.isCurrentlyEnabled(this));
+        mDCIModeSwitch.setChecked(DCIModeSwitch.isCurrentlyEnabled(this.getContext()));
         mDCIModeSwitch.setOnPreferenceChangeListener(new DCIModeSwitch());
 
 
@@ -105,7 +118,7 @@ public class SliderSettings extends PreferenceActivity
     }
 
     @Override
-    protected void onResume() {
+    public void onResume() {
         super.onResume();
 
         // Remove padding around the listview

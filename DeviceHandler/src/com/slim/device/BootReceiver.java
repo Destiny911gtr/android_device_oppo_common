@@ -26,7 +26,7 @@ import android.preference.PreferenceManager;
 import android.content.SharedPreferences;
 import com.slim.device.KernelControl;
 import com.slim.device.settings.ScreenOffGesture;
-import com.slim.device.settings.SliderSettings;
+import com.slim.device.settings.DeviceSettings;
 import com.slim.device.util.FileUtils;
 import com.slim.device.Utils;
 import java.io.File;
@@ -64,9 +64,9 @@ private void restore(String file, String value) {
 
             // Disable slider settings if needed
             if (!KernelControl.hasSlider()) {
-                disableComponent(context, SliderSettings.class.getName());
+                disableComponent(context, DeviceSettings.class.getName());
             } else {
-                enableComponent(context, SliderSettings.class.getName());
+                enableComponent(context, DeviceSettings.class.getName());
 
                 String sliderTop = getPreferenceString(context, "keycode_top_position", "601");
                 String sliderMiddle = getPreferenceString(context, "keycode_middle_position", "602");

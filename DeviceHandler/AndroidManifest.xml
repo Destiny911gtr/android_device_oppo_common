@@ -39,9 +39,10 @@
         </activity>
 
         <activity
-            android:name=".settings.SliderSettings"
-            android:theme="@style/DeviceHandlerTheme"
-            android:label="@string/notification_slider">
+            android:name=".settings.DeviceSettingsActivity"
+            android:theme="@style/AppTheme"
+            android:label="@string/device_settings"
+	    android:launchMode="singleTask" >
             <intent-filter>
                 <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
             </intent-filter>
@@ -54,6 +55,15 @@
             <meta-data android:name="com.android.settings.summary"
                 android:resource="@string/device_settings_dashboard_summary" />
         </activity>
+
+	<activity-alias
+            android:name=".settings.DeviceSettings"
+            android:label="@string/device_settings"
+            android:targetActivity=".settings.DeviceSettingsActivity" >
+            <intent-filter>
+                <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
+            </intent-filter>
+        </activity-alias>
 
         <receiver android:name=".BootReceiver" >
           <intent-filter>
