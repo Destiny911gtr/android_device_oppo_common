@@ -17,6 +17,7 @@
 package com.slim.device.settings;
 
 import android.os.Bundle;
+import android.os.SystemProperties;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
 import android.preference.SwitchPreference;
@@ -54,8 +55,13 @@ public class DeviceSettings extends PreferenceFragment
     private ListPreference mSliderTop;
     private ListPreference mSliderMiddle;
     private ListPreference mSliderBottom;
+
+    private static final String SPECTRUM_KEY = "spectrum";
+    private static final String SPECTRUM_SYSTEM_PROPERTY = "persist.spectrum.profile";
+
     private TwoStatePreference mSRGBModeSwitch;
     private TwoStatePreference mDCIModeSwitch;
+    private ListPreference mSpectrum;
 
 @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
@@ -83,7 +89,11 @@ public class DeviceSettings extends PreferenceFragment
         mDCIModeSwitch.setChecked(DCIModeSwitch.isCurrentlyEnabled(this.getContext()));
         mDCIModeSwitch.setOnPreferenceChangeListener(new DCIModeSwitch());
 
-
+	mSpectrum = (ListPreference) findPreference(SPECTRUM_KEY);
+        if( mSpectrum != null ) {
+            mSpectrum.setValue(SystemProperties.get(SPECTRUM_SYSTEM_PROPERTY, "0"));
+            mSpectrum.setOnPreferenceChangeListener(this);
+        }
     }
 
     private void setSummary(ListPreference preference, String file) {
@@ -97,6 +107,16 @@ public class DeviceSettings extends PreferenceFragment
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         final String file;
+	final String key = preference.getKey();
+	String strvalue;
+
+	if (SPECTRUM_KEY.equals(key)) {
+	    Boolean value;
+            strvalue = (String) newValue;
+            SystemProperties.set(SPECTRUM_SYSTEM_PROPERTY, strvalue);
+            return true;
+	}
+
         if (preference == mSliderTop) {
             file = KernelControl.KEYCODE_SLIDER_TOP;
         } else if (preference == mSliderMiddle) {
