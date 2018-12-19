@@ -47,8 +47,8 @@
     <string name="middle_position">Middle position</string>
     <string name="bottom_position">Bottom position</string>
     <string name="total_silence">Total silence</string>
-    <string name="alarms_only">Alarms only</string>
     <string name="priority_only">Priority only</string>
+    <string name="vibrate_mode">Vibration</string>
     <string name="none">None</string>
 
     <!-- Performance -->
