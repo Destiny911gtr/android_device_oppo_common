@@ -15,8 +15,8 @@
 
     <string-array name="notification_slider_action_entries" translatable="false">
         <item>@string/total_silence</item>
-        <item>@string/alarms_only</item>
         <item>@string/priority_only</item>
+	<item>@string/vibrate_mode</item>
         <item>@string/none</item>
     </string-array>
 
