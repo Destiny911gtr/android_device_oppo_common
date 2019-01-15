@@ -182,14 +182,14 @@ public class KeyHandler implements DeviceKeyHandler {
     private void setZenMode(int mode) {
         mNotificationManager.setZenMode(mode, null, TAG);
         if (mVibrator != null) {
-            mVibrator.vibrate(50);
+            mVibrator.vibrate(25);
         }
     }
 
     private void setRingerMode(int mode) {
         mAudioManager.setRingerMode(mode);
         if (mVibrator != null) {
-            mVibrator.vibrate(50);
+            mVibrator.vibrate(25);
         }
     }
 
@@ -197,7 +197,7 @@ public class KeyHandler implements DeviceKeyHandler {
         if (mVibrator == null) {
             return;
         }
-            mVibrator.vibrate(50);
+            mVibrator.vibrate(25);
     }
 
     private SharedPreferences getGestureSharedPreferences() {

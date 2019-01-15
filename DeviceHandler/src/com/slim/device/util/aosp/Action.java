@@ -154,7 +154,7 @@ public class Action {
                         am.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
                         Vibrator vib = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
                         if(vib != null){
-                            vib.vibrate(50);
+                            vib.vibrate(25);
                         }
                     }else{
                         am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
@@ -190,7 +190,7 @@ public class Action {
                         am.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
                         Vibrator vib = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
                         if (vib != null) {
-                            vib.vibrate(50);
+                            vib.vibrate(25);
                         }
                     } else if (am.getRingerMode() == AudioManager.RINGER_MODE_VIBRATE) {
                         am.setRingerMode(AudioManager.RINGER_MODE_SILENT);
