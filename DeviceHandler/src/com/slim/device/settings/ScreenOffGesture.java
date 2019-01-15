@@ -140,9 +140,9 @@ public class ScreenOffGesture extends PreferenceFragment implements
         setupOrUpdatePreference(mGestureDoubleSwipe, mScreenOffGestureSharedPreferences
                 .getString(PREF_GESTURE_DOUBLE_SWIPE, ActionConstants.ACTION_MEDIA_PLAY_PAUSE));
         setupOrUpdatePreference(mGestureArrowUp, mScreenOffGestureSharedPreferences
-                    .getString(PREF_GESTURE_ARROW_UP, ActionConstants.ACTION_TORCH));
+                    .getString(PREF_GESTURE_ARROW_UP, ActionConstants.ACTION_VIB));
         setupOrUpdatePreference(mGestureArrowDown, mScreenOffGestureSharedPreferences
-                .getString(PREF_GESTURE_ARROW_DOWN, ActionConstants.ACTION_VIB_SILENT));
+                .getString(PREF_GESTURE_ARROW_DOWN, ActionConstants.ACTION_TORCH));
         setupOrUpdatePreference(mGestureArrowLeft, mScreenOffGestureSharedPreferences
                 .getString(PREF_GESTURE_ARROW_LEFT, ActionConstants.ACTION_MEDIA_PREVIOUS));
         setupOrUpdatePreference(mGestureArrowRight, mScreenOffGestureSharedPreferences

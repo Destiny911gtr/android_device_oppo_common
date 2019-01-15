@@ -130,13 +130,13 @@ public class KeyHandler implements DeviceKeyHandler {
             case GESTURE_V_SCANCODE:
                 action = getGestureSharedPreferences()
                         .getString(ScreenOffGesture.PREF_GESTURE_ARROW_DOWN,
-                        ActionConstants.ACTION_VIB_SILENT);
+                        ActionConstants.ACTION_TORCH);
                         doHapticFeedback();
                 break;
             case GESTURE_V_UP_SCANCODE:
                 action = getGestureSharedPreferences()
                         .getString(ScreenOffGesture.PREF_GESTURE_ARROW_UP,
-                        ActionConstants.ACTION_TORCH);
+                        ActionConstants.ACTION_VIB);
                         doHapticFeedback();
                 break;
             case GESTURE_LTR_SCANCODE:
