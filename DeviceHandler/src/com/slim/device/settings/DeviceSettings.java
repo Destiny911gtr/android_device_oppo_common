@@ -23,8 +23,6 @@ import android.preference.PreferenceActivity;
 import android.preference.SwitchPreference;
 import com.slim.device.SRGBModeSwitch;
 import com.slim.device.DCIModeSwitch;
-import com.slim.device.OnePlusModeSwitch;
-import com.slim.device.NightModeSwitch;
 import android.support.v14.preference.PreferenceFragment;
 import android.support.v7.preference.ListPreference;
 import android.support.v7.preference.Preference;
@@ -48,8 +46,6 @@ public class DeviceSettings extends PreferenceFragment
 
     public static final String KEY_SRGB_SWITCH = "srgb";
     public static final String KEY_DCI_SWITCH = "dci";
-    public static final String KEY_NIGHT_SWITCH = "night";
-    public static final String KEY_ONEPLUS_SWITCH = "oneplus";
     public static final String KEYCODE_SLIDER_TOP = "keycode_top_position";
     public static final String KEYCODE_SLIDER_MIDDLE = "keycode_middle_position";
     public static final String KEYCODE_SLIDER_BOTTOM = "keycode_bottom_position";
@@ -65,8 +61,6 @@ public class DeviceSettings extends PreferenceFragment
 
     private TwoStatePreference mSRGBModeSwitch;
     private TwoStatePreference mDCIModeSwitch;
-    private TwoStatePreference mNightModeSwitch;
-    private TwoStatePreference mOnePlusModeSwitch;
     private ListPreference mSpectrum;
 
 @Override
@@ -94,16 +88,6 @@ public class DeviceSettings extends PreferenceFragment
         mDCIModeSwitch.setEnabled(DCIModeSwitch.isSupported());
         mDCIModeSwitch.setChecked(DCIModeSwitch.isCurrentlyEnabled(this.getContext()));
         mDCIModeSwitch.setOnPreferenceChangeListener(new DCIModeSwitch());
-
-	mNightModeSwitch = (TwoStatePreference) findPreference(KEY_DCI_SWITCH);
-        mNightModeSwitch.setEnabled(NightModeSwitch.isSupported());
-        mNightModeSwitch.setChecked(NightModeSwitch.isCurrentlyEnabled(this));
-        mNightModeSwitch.setOnPreferenceChangeListener(new NightModeSwitch());
-
-	mOnePlusModeSwitch = (TwoStatePreference) findPreference(KEY_DCI_SWITCH);
-        mOnePlusModeSwitch.setEnabled(OnePlusModeSwitch.isSupported());
-        mOnePlusModeSwitch.setChecked(OnePlusModeSwitch.isCurrentlyEnabled(this));
-        mOnePlusModeSwitch.setOnPreferenceChangeListener(new OnePlusModeSwitch());
 
 	mSpectrum = (ListPreference) findPreference(SPECTRUM_KEY);
         if( mSpectrum != null ) {

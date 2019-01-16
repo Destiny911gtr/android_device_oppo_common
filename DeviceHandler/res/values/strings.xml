@@ -61,13 +61,10 @@
     <string name="button_swap_summary">Swap the order of recents and back buttons</string>
     
     <!-- Color Modes-->
-    <string name="graphics_title">Graphics</string> 
-    <string name="srgb_mode_summary"></string>
-    <string name="srgb_mode_title">sRGB mode</string>
-    <string name="dci_mode_summary"></string>
-    <string name="dci_mode_title">Wide color gammut mode</string>
-    <string name="night_mode_summary"></string>
-    <string name="night_mode_title">Night mode</string>
-    <string name="oneplus_mode_summary"></string>
-    <string name="oneplus_mode_title">Soft mode</string>
+	<string name="graphics_title">Graphics</string> 
+	<string name="srgb_mode_summary"></string>
+	<string name="srgb_mode_title">sRGB mode</string>
+        <string name="dci_mode_summary"></string>
+        <string name="dci_mode_title">Wide color gammut mode</string>
+
 </resources>

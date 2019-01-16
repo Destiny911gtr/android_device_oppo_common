@@ -72,14 +72,6 @@
             android:key="dci"
             android:summary="@string/dci_mode_summary"
             android:title="@string/dci_mode_title" />
-	<SwitchPreference
-            android:key="night"
-            android:summary="@string/night_mode_summary"
-            android:title="@string/night_mode_title" />
-	<SwitchPreference
-            android:key="oneplus"
-            android:summary="@string/oneplus_mode_summary"
-            android:title="@string/oneplus_mode_title" />
     </PreferenceCategory>
 
 </PreferenceScreen>
