@@ -28,12 +28,9 @@
           <intent-filter>
                 <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
           </intent-filter>
-          <meta-data
-                android:name="com.android.settings.icon"
-                android:resource="@drawable/ic_settings_gestures" />
-          <meta-data
-                android:name="com.android.settings.category"
-                android:value="com.android.settings.category.ia.homepage" />
+	  <meta-data
+             android:name="com.android.settings.category"
+             android:value="com.android.settings.category.ia.gestures" />
           <meta-data android:name="com.android.settings.summary"
                 android:resource="@string/gestures_dashboard_summary" />
         </activity>
@@ -49,9 +46,6 @@
             <meta-data
                 android:name="com.android.settings.icon"
                 android:resource="@drawable/ic_settings_additional_buttons" />
-            <meta-data
-                android:name="com.android.settings.category"
-                android:value="com.android.settings.category.ia.homepage" />
             <meta-data android:name="com.android.settings.summary"
                 android:resource="@string/device_settings_dashboard_summary" />
         </activity>
