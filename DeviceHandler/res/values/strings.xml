@@ -39,8 +39,8 @@
     <string name="gesture_double_tap_title">Double tap</string>
 
      <!-- Notification slider -->
-    <string name="notification_slider">Notification slider</string>
-    <string name="notification_slider_summary">Configure slider positions</string>
+    <string name="device_settings">Device settings</string>
+    <string name="device_settings_summary">Various device specific settings</string>
     <string name="action">Action</string>
 
     <string name="top_position">Top position</string>

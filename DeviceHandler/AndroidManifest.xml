@@ -38,7 +38,7 @@
         <activity
             android:name=".settings.SliderSettings"
             android:theme="@style/DeviceHandlerTheme"
-            android:label="@string/notification_slider">
+            android:label="@string/device_settings">
             <intent-filter>
                 <action android:name="com.android.settings.action.EXTRA_SETTINGS" />
             </intent-filter>
@@ -49,7 +49,7 @@
                 android:name="com.android.settings.category"
                 android:value="com.android.settings.category.ia.system" />
             <meta-data android:name="com.android.settings.summary"
-                android:resource="@string/notification_slider_summary"/>
+                android:resource="@string/device_settings_summary"/>
         </activity>
 
         <receiver android:name=".BootReceiver" >
